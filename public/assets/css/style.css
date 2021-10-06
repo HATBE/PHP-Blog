@@ -1,0 +1,29 @@
+body {
+    background-color: #a9a9a9 !important;
+}
+.top-buffer {
+    margin-top: 20px !important;
+}
+.page-link {
+    background-color: rgba(var(--bs-secondary-rgb)) !important;
+    color: white;
+    border: 1px solid rgba(0,0,0,.125);
+}
+   
+.page-item.disabled .page-link {
+    background-color: rgba(var(--bs-secondary-rgb)) !important;
+    color: rgb(112, 112, 112);
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.page-item.active .page-link {
+    background-color: rgba(var(--bs-dark-rgb)) !important;
+    color: white;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.page-link:focus, .page-link:hover {
+    background-color: rgba(var(--bs-secondary-rgb)) !important;
+    color: white;
+    border: 1px solid rgba(0,0,0,.125);
+}
