@@ -1,9 +1,8 @@
 <?php
-    define('DB_HOST', 'localhost');
-
-    define('DB_USER', '');
-    define('DB_PASSWORD', '');
-    define('DB_NAME', 'mvc');
+    define('DB_HOST', '<host>');
+    define('DB_USER', '<user>');
+    define('DB_PASSWORD', '<password>');
+    define('DB_NAME', '<dbname>');
 
     define('ROOT_PATH', '/');
 
