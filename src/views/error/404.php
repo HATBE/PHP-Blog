@@ -1,1 +1,1 @@
-Error 404, Post not found
+Error 404, Page not found

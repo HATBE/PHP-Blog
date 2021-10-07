@@ -4,7 +4,7 @@
   <div class="card-body">
     <div class="row justify-content-md-center">
         <form method="POST" class="col-sm-5">
-            <h2>Login</h2>
+            <h2>Register</h2>
             <?php if($data['errors'] != null):?>
               <div class="alert alert-danger" role="alert">
                 <?php foreach($data['errors'] as $error):?>
@@ -20,7 +20,7 @@
                 <label for="password" class="form-label">Password</label>
                 <input name="password" type="password" class="form-control" id="password">
             </div>
-            <button name="submit" type="submit" class="btn btn-primary">Login</button>
+            <button name="submit" type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>
   </div>

@@ -1,30 +1,19 @@
 <?php require_once(__DIR__ . '/layout/header.php');?>
 
-<?php if($data['posts'] == null):?>
-    <div class="alert alert-danger top-buffer" role="alert">
+<?php if(isset($_SESSION['loggedIn'])):?>
+    <a href="<?= ROOT_PATH . 'posts/create/';?>" class="my-2 btn btn-success">Create</a>
+<?php endif;?>
+
+<?php if($data['postsData'] == null):?>
+    <div class="alert alert-danger" role="alert">
         No Posts found.
     </div>
 <?php else:?>
-<?php foreach($data['posts'] as $post): ?>
-    <div class="card text-white bg-secondary top-buffer">
-        <?php if($post->id == $data['newestPostId']):?>
-            <div class="bg-dark card-header">
-                Newest
-            </div>
-        <?php endif;?>
-        <div class="card-body">
-            <h5 class="card-title"><?= $post->title;?></h5>
-            <p class="card-text"><?= $post->body;?></p>
-            <?php if(isset($_SESSION['loggedIn'])):?>
-                <a href="<?= ROOT_PATH . 'posts/edit/' . $post->id;?>" class="btn btn-primary">Edit</a>
-            <?php endif;?>
-        </div>
-        <div class="card-footer">
-            <?= date('m/d/Y H:m', strtotime($post->created_at));?> By <b><?= $post->username;?></b>
-        </div>
-    </div>
-<?php endforeach;?>
+    <?php foreach($data['postsData'] as $post): ?>
+        <?php require(__DIR__ . '/templates/card.php');?>
+    <?php endforeach;?>
 <?php endif;?>
+
 <?php if($data['maxPage'] != 1 && $data['currentPage'] <= $data['maxPage']):?>
     <nav aria-label="...">
         <ul class="pagination top-buffer">

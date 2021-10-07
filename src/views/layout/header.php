@@ -20,8 +20,16 @@
                         <button class="btn btn-sm btn-outline-primary" type="button">Login</button>
                     </a>
                 <?php else:?>
-                    Logged In
+                    <div>
+                        <a class="nounderline" href="<?= ROOT_PATH;?>users/logout">
+                            <button class="btn btn-sm btn-outline-primary" type="button">Logout</button>
+                        </a>
+                        <a class="nounderline" href="<?= ROOT_PATH;?>users/users">
+                            <button class="btn btn-sm btn-outline-primary" type="button">Users</button>
+                        </a>
+                    </div>
                 <?php endif;?>
             </div>
         </nav>
-        <div class="container">
+        <div class="body-container">
+            <div class="container p-3">
