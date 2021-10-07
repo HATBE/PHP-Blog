@@ -1,6 +1,6 @@
-<?php require_once(__DIR__ . '/layout/header.php');?>
+<?php require_once(__DIR__ . '/../templates/header.php');?>
 
-<a href="<?= ROOT_PATH . 'users/register/';?>" class="my-2 btn btn-success">Register</a>
+<a href="<?= ROOT_PATH . 'authentications/register/';?>" class="my-2 btn btn-success">Register</a>
 
 <?php if($data['usersData'] == null):?>
     <div class="alert alert-danger" role="alert">
@@ -33,4 +33,4 @@
     </table>
 <?php endif;?>
 
-<?php require_once(__DIR__ . '/layout/footer.php');?>
+<?php require_once(__DIR__ . '/../templates/footer.php');?>

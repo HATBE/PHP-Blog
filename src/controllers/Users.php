@@ -11,97 +11,6 @@
             $this->postModel = $this->model('Post');
         }
 
-        public function register() {
-            if(!isset($_SESSION['loggedIn'])) {
-                header('Location: ' . ROOT_PATH);
-                exit();
-            }
-
-            $errors = null;
-            $username = '';
-            $password = '';
-
-            if(isset($_POST['submit'])) {
-                if(empty($_POST['username'])) {
-                    $errors[] = "Field username is empty.";
-                } else {
-                    $username = $_POST['username'];
-                }
-                if(empty($_POST['password'])) {
-                    $errors[] = "Field password is empty.";
-                } else {
-                    $password = $_POST['password'];
-                }
-                if($this->userModel->exists($username)) {
-                    $errors[] = 'User already exists';
-                }
-                if($errors == null) {
-                    $password = password_hash($password, PASSWORD_DEFAULT);
-                    $username = htmlentities($username, ENT_QUOTES, 'utf-8');
-                    $username = trim($username);
-                    $username = str_replace(' ', '', $username);
-
-                    $this->userModel->register($username, $password);
-                    header('Location: ' . ROOT_PATH . 'users/users');
-                }
-            }
-
-            $data = array(
-                'username' => $username,
-                'errors' => $errors
-            );
-
-            $this->view('register', $data);
-        }
-
-        public function login() {
-            if(isset($_SESSION['loggedIn'])) {
-                header('Location: ' . ROOT_PATH);
-                exit();
-            }
-
-            $errors = null;
-            $username = '';
-            $password = '';
-
-            if(isset($_POST['submit'])) {
-                if(empty($_POST['username'])) {
-                    $errors[] = "Field username is empty.";
-                } else {
-                    $username = $_POST['username'];
-                }
-                if(empty($_POST['password'])) {
-                    $errors[] = "Field password is empty.";
-                } else {
-                    $password = $_POST['password'];
-                }
-                if($errors == null) {
-                    $login = $this->userModel->login($username, $password);
-                    if($login !== false) {
-                        $_SESSION['loggedIn'] = $login;
-                        header('Location: ' . ROOT_PATH);
-                    } else {
-                        $errors[] = "Login failed, password or username incorrect.";
-                    }
-                }
-            }
-            $data = array(
-                'username' => $username,
-                'errors' => $errors
-            );
-
-            $this->view('login', $data);
-        }
-
-        public function logout() {
-            if(!isset($_SESSION['loggedIn'])) {
-                header('Location: ' . ROOT_PATH);
-                exit();
-            }
-            session_destroy();
-            header('Location: ' . ROOT_PATH);
-        }
-
         public function users() {
             if(!isset($_SESSION['loggedIn'])) {
                 header('Location: ' . ROOT_PATH);
@@ -114,7 +23,7 @@
                 'usersData' => $users
             );
 
-            $this->view('users', $data);
+            $this->view('user/users', $data);
         }
 
         public function edit($id) {
@@ -165,10 +74,12 @@
             $data = array(
                 'errors' => $errors,
                 'id' => $user->id,
-                'username' => $user->username
+                'username' => $user->username,
+                'backPath' => 'users/users',
+                'actionName' => 'Edit'
             );
 
-            $this->view('useredit', $data);
+            $this->view('user/edit', $data);
         }
 
         public function delete($id) {
@@ -200,9 +111,10 @@
             }
 
             $data = array(
-                'id' => $id
+                'id' => $id,
+                'backPath' => 'users/users'
             );  
 
-            $this->view('deleteuser', $data);
+            $this->view('user/delete', $data);
         }
     }

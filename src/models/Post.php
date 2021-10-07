@@ -42,7 +42,7 @@
             return $this->db->rowCount() > 0 ? $result->id : null;
         }
 
-        public function exists($id) {
+        public function existsId($id) {
             $this->db->query('SELECT id FROM posts WHERE id LIKE :id;');
             $this->db->bind(':id', $id);
             $this->db->execute();

@@ -11,8 +11,8 @@
             <a href="<?= ROOT_PATH . 'posts/post/' . $post['id'] . '/' . $data['currentPage'];?>" class="btn btn-primary">View</a>
         <?php endif;?>
         <?php if(isset($_SESSION['loggedIn'])):?>
-            <a href="<?= ROOT_PATH . 'posts/edit/' . $post['id'];?>" class="btn btn-warning">Edit</a>
-            <a href="<?= ROOT_PATH . 'posts/delete/' . $post['id'];?>" class="btn btn-danger">Delete</a>
+            <a href="<?= ROOT_PATH . 'posts/edit/' . $post['id'] . '/' . $data['currentPage'];?>" class="btn btn-warning">Edit</a>
+            <a href="<?= ROOT_PATH . 'posts/delete/' . $post['id'] . '/' . $data['currentPage'];?>" class="btn btn-danger">Delete</a>
         <?php endif;?>
     </div>
     <div class="card-footer">

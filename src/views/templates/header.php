@@ -16,12 +16,12 @@
                 <a class=" navbar-brand" href="<?= ROOT_PATH;?>"><?= SITE_NAME;?></a>
                 
                 <?php if(!isset($_SESSION['loggedIn'])):?>
-                    <a href="<?= ROOT_PATH;?>users/login">
+                    <a href="<?= ROOT_PATH;?>authentications/login">
                         <button class="btn btn-sm btn-outline-primary" type="button">Login</button>
                     </a>
                 <?php else:?>
                     <div>
-                        <a class="nounderline" href="<?= ROOT_PATH;?>users/logout">
+                        <a class="nounderline" href="<?= ROOT_PATH;?>authentications/logout">
                             <button class="btn btn-sm btn-outline-primary" type="button">Logout</button>
                         </a>
                         <a class="nounderline" href="<?= ROOT_PATH;?>users/users">

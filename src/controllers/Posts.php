@@ -49,7 +49,7 @@
                 'maxPage' => $maxPage
             );
 
-            $this->view('index', $data);
+            $this->view('post/index', $data);
         }
 
         public function post($id, $oldPageIndex = 1) {
@@ -76,10 +76,10 @@
                 'view' => false,
                 'newestPostId' => $newestPostId,
                 'post' => $postData,
-                'oldPageIndex' => $oldPageIndex
+                'backPath' => "posts/index/" . $oldPageIndex
             );
 
-            $this->view('post', $data);
+            $this->view('post/post', $data);
         }
 
         public function create() {
@@ -118,13 +118,15 @@
             $data = array(
                 'title' => $title,
                 'body' => $body,
-                'errors' => $errors
+                'errors' => $errors,
+                'actionName' => 'Create',
+                'backPath' => 'posts/index/'
             );
 
-            $this->view('create', $data);
+            $this->view('post/create', $data);
         }
 
-        public function edit($id) {
+        public function edit($id, $oldPageIndex = 1) {
             if(!isset($_SESSION['loggedIn'])) {
                 header('Location: ' . ROOT_PATH);
                 exit();
@@ -170,13 +172,15 @@
                 'errors' => $errors,
                 'title' => $post->title,
                 'body' => $post->body,
-                'id' => $post->id
+                'id' => $post->id,
+                'backPath' => "posts/index/" . $oldPageIndex,
+                'actionName' => 'Edit'
             );  
 
-            $this->view('edit', $data);
+            $this->view('post/edit', $data);
         }
 
-        public function delete($id) {
+        public function delete($id, $oldPageIndex = 1) {
             if(!isset($_SESSION['loggedIn'])) {
                 header('Location: ' . ROOT_PATH);
                 exit();
@@ -187,7 +191,7 @@
             }
             $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 
-            if(!$this->postModel->exists($id)) {
+            if(!$this->postModel->existsId($id)) {
                 header('Location: ' . ROOT_PATH);
                 exit();
             }
@@ -198,9 +202,10 @@
             }
 
             $data = array(
-                'id' => $id
+                'id' => $id,
+                'backPath' => "posts/index/" . $oldPageIndex
             );  
 
-            $this->view('delete', $data);
+            $this->view('post/delete', $data);
         }
     }
