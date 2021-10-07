@@ -57,6 +57,7 @@ EXIT;
 ``` bash
 $ cd /var/www/html
 $ git clone https://github.com/HATBE/PHP-MVC-Blog.git .
+$ sudo mysql -u root -p blog < dump.sql
 ```
 
 Changing Config
