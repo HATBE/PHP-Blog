@@ -1,4 +1,4 @@
-<?php require_once(__DIR__ . '/../templates/header.php');?>
-    <?php require(__DIR__ . '/../templates/backBtn.php');?>
-    <?php require(__DIR__ . '/../templates/postForm.php');?>
-<?php require_once(__DIR__ . '/../templates/footer.php');?>
+<?php Template::load('header');?>
+    <?php Template::load('backBtn', array('path' => $data['backPath']));?>
+    <?php Template::load('postForm', array('title' => $data['title'], 'body' => $data['body'], 'actionName' => $data['actionName'], 'errors' => $data['errors']));?>
+<?php Template::load('footer');?>

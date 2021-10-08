@@ -1,4 +1,4 @@
-<?php require_once(__DIR__ . '/../templates/header.php');?>
+<?php Template::load('header');?>
     <?php if(isset($_SESSION['loggedIn'])):?>
         <a href="<?= ROOT_PATH . 'posts/create/';?>" class="my-2 btn btn-success">Create</a>
     <?php endif;?>
@@ -9,9 +9,9 @@
         </div>
     <?php else:?>
         <?php foreach($data['postsData'] as $post): ?>
-            <?php require(__DIR__ . '/../templates/postCard.php');?>
+            <?php Template::load('postCard', array('id' => $post['id'], 'currentPage' => $data['currentPage'], 'body' => $post['body'], 'title' => $post['title'], 'newestPostId' => $data['newestPostId'], 'date' => $post['date'], 'username' => $post['username'], 'view' => $data['view']));?>
         <?php endforeach;?>
     <?php endif;?>
 
-    <?php require(__DIR__ . '/../templates/pagination.php');?>
-<?php require_once(__DIR__ . '/../templates/footer.php');?>
+    <?php Template::load('pagination', array('currentPage' => $data['currentPage'], 'maxPage' => $data['maxPage']));?>
+<?php Template::load('footer');?>

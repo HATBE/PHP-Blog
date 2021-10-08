@@ -120,7 +120,7 @@
                 'body' => $body,
                 'errors' => $errors,
                 'actionName' => 'Create',
-                'backPath' => 'posts/index/'
+                'backPath' => 'posts/index/',
             );
 
             $this->view('post/create', $data);

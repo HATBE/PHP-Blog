@@ -1,4 +1,4 @@
-<?php require_once(__DIR__ . '/../templates/header.php');?>
+<?php Template::load('header');?>
 
 <a href="<?= ROOT_PATH . 'authentications/register/';?>" class="my-2 btn btn-success">Register</a>
 
@@ -33,4 +33,4 @@
     </table>
 <?php endif;?>
 
-<?php require_once(__DIR__ . '/../templates/footer.php');?>
+<?php Template::load('footer');?>
