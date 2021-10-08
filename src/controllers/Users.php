@@ -97,7 +97,7 @@
                 header('Location: ' . ROOT_PATH);
                 exit();
             }
-            if($id == $_SESSION['loggedIn']) {
+            if($id == $_SESSION['loggedIn'] || $id == 1) {
                 header('Location: ' . ROOT_PATH . 'users/users');
                 exit();
             }

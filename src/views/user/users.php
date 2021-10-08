@@ -23,7 +23,7 @@
             <td><?= $user->username;?></td>
             <td><a href="<?= ROOT_PATH;?>users/edit/<?= $user->id;?>" class="btn btn-warning">Edit</a></td>
             <td>
-                <?php if($user->id != $_SESSION['loggedIn']):?>
+                <?php if($user->id != $_SESSION['loggedIn'] || $user->id != 1):?>
                     <a href="<?= ROOT_PATH;?>users/delete/<?= $user->id;?>" class="btn btn-danger">Delete</a>
                 <?php endif;?>
             </td>
