@@ -103,9 +103,8 @@
             }
 
             if(isset($_POST['sure'])) {
-                $this->userModel->delete($id);
-
                 $this->postModel->deleteAllPostsFromUserId($id);
+                $this->userModel->delete($id);
 
                 header('Location: ' . ROOT_PATH);
             }
