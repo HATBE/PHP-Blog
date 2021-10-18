@@ -74,3 +74,7 @@ define('DB_NAME', '<dbname>');
 ```
 
 Now, you can navigate to http://<ip/host> in your browser.
+
+Standard credentials (from dump.sql):
+Username: admin
+Password: 1234
