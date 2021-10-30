@@ -2,7 +2,7 @@
     class Database {
         private $host = DB_HOST;
         private $user = DB_USER;
-        private $password = DB_PASSWORD;
+        private $password = DB_PASS;
         private $name = DB_NAME;
 
         private $stmt;
@@ -20,6 +20,7 @@
             } catch(PDOException $e) {
                 $this->error = $e->getMessage();
                 echo $this->error;
+                exit();
             }
         }
 
@@ -53,7 +54,7 @@
             return $this->stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
-        public function  single() {
+        public function single() {
             $this->execute();
             return $this->stmt->fetch(PDO::FETCH_OBJ);
         }

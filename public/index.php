@@ -1,4 +1,4 @@
 <?php
-    require_once(__DIR__ . '/../src/Core.php');
+    require_once(__DIR__ . '/../src/classes/Core.php');
 
-    $core = new Core();
+    new Core();
