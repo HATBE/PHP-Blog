@@ -1,9 +1,20 @@
 <?php
-    require_once(__DIR__ . '/../Controller.php');
-
     class PostsController extends Controller {
-        public function index() {
-            $this->render('posts/index');
+
+        private $postModel;
+
+        public function __construct() {
+            $this->postModel = $this->model('post');
+        }
+
+        public function index($page = 1) {
+            $posts = $this->postModel->getIndexPosts($page);
+
+            $data = [
+                'posts' => $posts
+            ];  
+
+            $this->render('posts/index', $data);
         }
 
         public function post($id) {
