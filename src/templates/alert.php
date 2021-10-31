@@ -1,3 +1,7 @@
+<?php if(!empty($msg)):?>
 <div class="alert alert-<?= $type?>" role="alert">
-    <?= $msg?>
+    <?php foreach($msg as $ms):?>
+        <?= $ms?><br>
+    <?php endforeach;?>
 </div>
+<?php endif;?>

@@ -1,9 +1,9 @@
 <?php
     // datanase
     define('DB_HOST', 'localhost');
-    define('DB_USER', 'htbUSR');
+    define('DB_USER', '');
     define('DB_PASS', '');
-    define('DB_NAME', '');
+    define('DB_NAME', 'blog');
 
     // page settings
     define('ROOT_PATH', 'https://lixer.hatbe.ch/'); // domain (must end with a "/"!)
@@ -12,4 +12,4 @@
     define('PAGE_TITLE', 'HATBES BLOG');
     define('PAGE_SLOGAN', 'Blogging and stuff.');
 
-    define('ITEMS_PER_PAGE', 10);
+    define('ITEMS_PER_PAGE', 4);

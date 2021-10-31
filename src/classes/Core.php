@@ -5,15 +5,18 @@
         private $method = 'index'; // this must exist! in /src/classes/controllers/{class}->{method}
         private $params = [];
 
+        private $loggedInUser = null;
+
         public function __construct() {
             $this->init();
         }
 
         private function init() {
+            session_start();
             $this->include();
             $this->getUrl();
             $this->getController();
-            $this->controller = new $this->controller;
+            $this->controller = new $this->controller();
             $this->getMethod();
             $this->getParams();
             call_user_func_array([$this->controller, $this->method], $this->params);
@@ -23,17 +26,17 @@
             $controller = ucfirst(strtolower($this->url[0])) . 'Controller';
             if(file_exists(__DIR__ . '/controllers/' . $controller . '.php')) {
                 $this->controller = $controller;
-                unset($this->url[0]);
+                array_shift($this->url);
             }
             require_once(__DIR__ . '/controllers/' . $this->controller . '.php');
         }
         
         private function getMethod() {
-            if(isset($this->url[1])) {
-                $method = strtolower($this->url[1]);
+            if(isset($this->url[0])) {
+                $method = strtolower($this->url[0]);
                 if(method_exists($this->controller, $method)) {
                     $this->method = $method;
-                    unset($this->url[1]);
+                    array_shift($this->url);
                 }
             }
         }

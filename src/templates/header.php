@@ -41,6 +41,12 @@
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <a class="nav-link" href="<?= Linker::link('posts', 'index')?>">Blog</a>
+                            <?php if(!isset($_SESSION['loggedIn'])):?>
+                                <a class="nav-link" href="<?= Linker::link('auth', 'login')?>">Login</a>
+                            <?php else:?>
+                                <a class="nav-link" href="<?= Linker::link('users', 'index')?>">Users</a>
+                                <a class="nav-link" href="<?= Linker::link('auth', 'logout')?>">Logout</a>
+                            <?php endif;?>
                         </div>
                     </div>
                 </div>
