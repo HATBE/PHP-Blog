@@ -73,6 +73,14 @@
             return $this->db->lastId();
         }
 
+        public function deleteAllPostsFromUserId($id) {
+            $this->db->query('DELETE FROM posts WHERE user_fk LIKE :id;');
+            $this->db->bind(':id', $id);
+            $this->db->execute();
+            
+            return true;
+        }
+
         public function update($title, $body, $id) {
             $this->db->query('UPDATE posts SET title = :title, body = :body WHERE id LIKE :id');
             $this->db->bind(':title', $title);

@@ -1,7 +1,13 @@
 <?php
     class AuthModel extends Model {
         public function login($uname, $passwd) {
-            $user = $this->getUser($uname);
+            $this->db->query('SELECT id, password FROM users WHERE username LIKE :uname;');
+            $this->db->bind(':uname', $uname);
+            $user = $this->db->single();
+
+            if($this->db->rowCount() <= 0) {
+                return false;
+            }
 
             if($user == null) return false;
 
@@ -14,17 +20,13 @@
             }
         }
 
-        // PRIV
+        public function register($uname, $passwd) {
+            $this->db->query('INSERT INTO users (username, password) VALUES (:username, :password);');
+            $this->db->bind(':username', $uname);
+            $this->db->bind(':password', $passwd);
+            $this->db->execute();
 
-        private function getUser($uname) {
-            $this->db->query('SELECT id, password FROM users WHERE username LIKE :uname;');
-            $this->db->bind(':uname', $uname);
-            $row = $this->db->single();
-
-            if($this->db->rowCount() <= 0) {
-                return false;
-            }
-
-            return $row;
+            return true;
         }
+
     }
