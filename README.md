@@ -1,3 +1,7 @@
+# Feautures
+
+- Markdown Support
+- User Management
 # Installation
 
 Base OS: Ubuntu-server 20.04
