@@ -1,3 +1,8 @@
+# Feautures
+
+- Markdown Support
+- User Management
+- Installer
 # Installation
 
 Base OS: Ubuntu-server 20.04
@@ -56,25 +61,15 @@ EXIT;
 
 ``` bash
 $ cd /var/www/html
-$ git clone https://github.com/HATBE/PHP-MVC-Blog.git .
-$ sudo mysql -u root -p blog < dump.sql
+$ git clone https://github.com/HATBE/Blog.git .
+$ sudo chmod 755 /var/www/html -R
+$ sudo chown www-data:www-data /var/www/html
 ```
 
-Changing Config
+Now, you can navigate to https://<ip/host> in your browser.
 
-``` bash
-$ nano src/config/config.php
-``` 
+Follow the instructions of the installer.
 
-``` php
-define('DB_HOST', '<host>');
-define('DB_USER', '<user>');
-define('DB_PASSWORD', '<password>');
-define('DB_NAME', '<dbname>');
-```
-
-Now, you can navigate to http://<ip/host> in your browser.
-
-Standard credentials (from dump.sql):
+Standard credentials:
 Username: admin
 Password: 1234

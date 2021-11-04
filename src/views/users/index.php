@@ -1,4 +1,6 @@
-<?= Template::load('header', ['title' => 'Users']);?>
+<?= Template::load('header', ['title' => 'Users', 'tags' => '']);?>
+
+<h1 class="d-none">Users Overview</h1>
 
 <a href="<?= Linker::link('auth', 'register')?>" class="btn btn-primary">+ Register</a>
 

@@ -5,14 +5,15 @@
         private $method = 'index'; // this must exist! in /src/classes/controllers/{class}->{method}
         private $params = [];
 
-        private $loggedInUser = null;
-
         public function __construct() {
             $this->init();
         }
 
         private function init() {
             session_start();
+
+            $this->checkInstalled();
+
             $this->include();
             $this->getUrl();
             $this->getController();
@@ -63,6 +64,13 @@
                 $url = explode('/', $url);
                 if($url[0] == '') return;
                 $this->url = $url;
+            }
+        }
+
+        private function checkInstalled() {
+            if(!file_exists(__DIR__ . '/../../install/.installed')) {
+                require_once(__DIR__ . '/../../install/install.php');
+                exit();
             }
         }
     }
