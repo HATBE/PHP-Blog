@@ -17,18 +17,18 @@
 
     <title><?= PAGE_TITLE?> - <?= $title?></title>
     <meta name="description" content="<?= DESCRIPTION?>">
-    <meta name="keywords" content="<?= DEFAULT_KEYWORDS?>">
+    <meta name="keywords" content="<?= DEFAULT_KEYWORDS . $tags?>">
     <meta name="author" content="hatbe2113">
 </head>
 <body>
     <header class="bg-dark mb-4 shadow text-light">
         <div class="container">
             <div class="text-center p-3">
-                <h1>
+                <h2>
                     <a href="<?= ROOT_PATH?>" class="link-light text-decoration-none">
                         <?= PAGE_TITLE?>
                     </a>
-                </h1>
+                </h2>
                 <h6 class="text-muted">
                     <?= PAGE_SLOGAN?>
                 </h6>

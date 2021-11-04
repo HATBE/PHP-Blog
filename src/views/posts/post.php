@@ -1,4 +1,6 @@
-<?= Template::load('header', ['title' => $data['post'] != null ? $data['post']->title : 'post not found']);?>
+<?= Template::load('header', ['title' => $data['post'] != null ? $data['post']->title : 'post not found', 'tags' => '']);?>
+
+    <h1 class="d-none"><?=$data['post'] != null ? $data['post']->title : 'post not found'?></h1>
 
     <?= Template::load('backBtn', ['controller' => 'posts', 'method' => 'index', 'args' => $data['page']])?>
     <?php if($data['post'] !== null):?>

@@ -11,7 +11,7 @@ CREATE TABLE `posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `posts` (`id`, `user_fk`, `title`, `body`, `date`) VALUES
-(1, 1, 'Hello World', '##This is the first Post', '2021-10-07 13:28:50'),
+(1, 1, 'Hello World', 'This is the first blog post!', '2021-11-04 12:00:00');
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
