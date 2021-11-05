@@ -18,6 +18,7 @@
             $page = $page > $maxPage ? $maxPage : $page; // correct if page is over limit
             $start = ($page * ITEMS_PER_PAGE) - ITEMS_PER_PAGE;
             $elements = $page >= $maxPage ? $count % ITEMS_PER_PAGE : ITEMS_PER_PAGE; // in case the last page has not full count of elements
+            $elements = $maxPage <= 1 ? $count : $elements;
 
             $posts['meta'] = [
                 'page' => $page,
