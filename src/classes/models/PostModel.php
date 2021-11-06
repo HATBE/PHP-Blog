@@ -8,34 +8,49 @@
             $this->parsedown->setSafeMode(true);
         }
 
-
-        public function getPostsLimit($page = 1) {
+        public function getPostsLimit($page = 1, $term = null) {
             $page = $page === null || !is_numeric($page) ? 1 : filter_var($page, FILTER_SANITIZE_NUMBER_INT);
 
-            $count = $this->getFullCount();
-            $maxPage = ceil($count / ITEMS_PER_PAGE);
-            $page = $page < 1 ? 1 : $page; // correct if page is under limit
-            $page = $page > $maxPage ? $maxPage : $page; // correct if page is over limit
-            $start = ($page * ITEMS_PER_PAGE) - ITEMS_PER_PAGE;
-            $elements = $page >= $maxPage ? $count % ITEMS_PER_PAGE : ITEMS_PER_PAGE; // in case the last page has not full count of elements
+            $term = filter_var($term, FILTER_SANITIZE_STRING);
 
-            $posts['meta'] = [
-                'page' => $page,
-                'maxPage' => $maxPage,
-                'count' => $count,
-                'elements' => $elements
-            ];
+            $count = $this->getFullCount($term);
 
-            $this->db->query('SELECT posts.id as pid, users.username, posts.title, posts.body, posts.date from posts INNER JOIN users ON users.id LIKE posts.user_fk ORDER BY posts.date DESC LIMIT :from, :to;');
-            $this->db->bind(':from', $start);
-            $this->db->bind(':to', ITEMS_PER_PAGE);
-            $posts['posts'] = $this->db->resultSet();
+            if($count > 0) {
+                $maxPage = ceil($count / ITEMS_PER_PAGE);
+                $page = $page < 1 ? 1 : $page; // correct if page is under limit
+                $page = $page > $maxPage ? $maxPage : $page; // correct if page is over limit
+                $start = ($page * ITEMS_PER_PAGE) - ITEMS_PER_PAGE;
+                $elements = $page >= $maxPage ? $count % ITEMS_PER_PAGE : ITEMS_PER_PAGE; // in case the last page has not full count of elements
+                $elements = $maxPage <= 1 ? $count : $elements;
+                
+                $posts['meta'] = [
+                    'page' => $page,
+                    'maxPage' => $maxPage,
+                    'count' => $count,
+                    'elements' => $elements
+                ];
 
-            foreach($posts['posts'] as $post) {
-                $post->body = strlen($post->body) > 400 ? substr($post->body, 0, 400) . '...' : $post->body;
-                $post->body = strip_tags($this->parsedown->text($post->body));
-                $post->date = date('d.m.Y H:i', strtotime($post->date));
+                $query = $term !== null ? "WHERE (posts.body LIKE CONCAT('%', :query, '%') OR posts.title LIKE CONCAT('%', :query, '%') OR users.username LIKE :query)" : ''; // Search algorithm
+
+                $this->db->query('SELECT posts.id as pid, users.username, posts.title, posts.body, posts.date from posts INNER JOIN users ON users.id LIKE posts.user_fk ' . $query . ' ORDER BY posts.date DESC LIMIT :from, :to;');
+                $this->db->bind(':from', $start);
+                $this->db->bind(':to', ITEMS_PER_PAGE);
+    
+                if($term !== null){
+                    $this->db->bind(':query', $term);
+                }
+
+                $posts['posts'] = $this->db->resultSet();
+
+                foreach($posts['posts'] as $post) {
+                    $post->body = strlen($post->body) > 400 ? substr($post->body, 0, 400) . '...' : $post->body;
+                    $post->body = strip_tags($this->parsedown->text($post->body));
+                    $post->date = date('d.m.Y H:i', strtotime($post->date));
+                }
+            } else {
+                $posts = null;
             }
+
             return $posts;
         }
 
@@ -107,8 +122,15 @@
             return true;
         }
 
-        public function getFullCount() {
-            $this->db->query('SELECT COUNT(id) c FROM posts;');
+        public function getFullCount($term) {
+            $query = $term !== null ? "WHERE (posts.body LIKE CONCAT('%', :query, '%') OR posts.title LIKE CONCAT('%', :query, '%') OR users.username LIKE :query)" : ''; // Search algorithm
+
+            $this->db->query('SELECT COUNT(posts.id) c FROM posts INNER JOIN users ON users.id LIKE posts.user_fk ' . $query . ';');
+
+            if($term !== null){
+                $this->db->bind(':query', $term);
+            }
+
             $count = $this->db->single();
 
             return $count->c;
