@@ -7,7 +7,10 @@
         }
 
         public function index($page = 1) {
-            $posts = $this->postModel->getPostsLimit($page);
+
+            $term = isset($_GET['q'])? $_GET['q'] : null; // get serach term for search "algorithm"
+
+            $posts = $this->postModel->getPostsLimit($page, $term);
 
             $data = [
                 'posts' => $posts

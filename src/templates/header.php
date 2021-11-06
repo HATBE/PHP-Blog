@@ -33,21 +33,33 @@
                     <?= PAGE_SLOGAN?>
                 </h6>
             </div>
-            <nav class="bg-dark navbar navbar-expand-lg navbar-dark">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                            <a class="nav-link" href="<?= Linker::link('posts', 'index')?>">Blog</a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="<?= Linker::link('posts', 'index')?>">Blog</a>
+                            </li>
                             <?php if(!isset($_SESSION['loggedIn'])):?>
-                                <a class="nav-link" href="<?= Linker::link('auth', 'login')?>">Login</a>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="<?= Linker::link('auth', 'login')?>">Login</a>
+                            </li>
                             <?php else:?>
-                                <a class="nav-link" href="<?= Linker::link('users', 'index')?>">Users</a>
-                                <a class="nav-link" href="<?= Linker::link('auth', 'logout')?>">Logout</a>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="<?= Linker::link('users', 'index')?>">Users</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="<?= Linker::link('auth', 'logout')?>">Logout</a>
+                            </li>
                             <?php endif;?>
-                        </div>
+                        </ul>
+                        <form action="<?= Linker::link('index', 'index')?>" method="GET" class="d-flex shadow">
+                            <input value="<?= isset($_GET['q']) ? $_GET['q'] : '';?>" class="form-control border-0 bg-secondary text-white" placeholder="Search" name="q" type="search" placeholder="Search" aria-label="Search" required>
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </form>
                     </div>
                 </div>
             </nav>
