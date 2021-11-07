@@ -53,6 +53,12 @@
                 } else {
                     $body = $_POST['bodyInput'];
                 }
+                if(strlen($title) >= 255) {
+                    $errors[] = "Title to long";
+                }
+                if(strlen($body) >= 65535) {
+                    $errors[] = "Body to long";
+                }
                 if($errors == null) {
                     $userId = $_SESSION['loggedIn'];
                     $title = htmlentities($title, ENT_QUOTES, "UTF-8");
