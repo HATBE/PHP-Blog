@@ -64,6 +64,8 @@
                 $url = explode('/', $url);
                 if($url[0] == '') return;
                 $this->url = $url;
+            } else {
+                $this->url = ['/'];
             }
         }
 

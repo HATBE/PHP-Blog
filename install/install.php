@@ -4,6 +4,10 @@
         exit();
     }
     if(isset($_POST['submit'])) {
+        if(!isset($_POST['dbhost']) || !isset($_POST['dbuser']) || !isset($_POST['dbpass']) || !isset($_POST['dbname']) || !isset($_POST['url']) || !isset($_POST['keywords']) || !isset($_POST['description']) || !isset($_POST['title']) || !isset($_POST['slogan'])) {
+            echo "please fill in all inputs";
+            exit();
+        }
         $dbhost = $_POST['dbhost'];
         $dbuser = $_POST['dbuser'];
         $dbpass = $_POST['dbpass'];
@@ -87,41 +91,41 @@
             <span>Please Create the Database!</span>
             <div class="mb-3">
                 <label class="form-label">DB Host*</label>
-                <input name="dbhost" type="text" value="localhost" class="form-control">
+                <input name="dbhost" type="text" value="localhost" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">DB User*</label>
-                <input name="dbuser" type="text" class="form-control">
+                <input name="dbuser" type="text" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">DB Password*</label>
-                <input name="dbpass" type="password" class="form-control">
+                <input name="dbpass" type="password" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">DB Name*</label>
-                <input name="dbname" type="text" class="form-control">
+                <input name="dbname" type="text" class="form-control" required>
             </div>
             <hr>
             <div class="mb-3">
                 <label class="form-label">Title*</label>
-                <input name="title" type="text" class="form-control">
+                <input name="title" type="text" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">URL/Path*</label>
-                <input name="url" value="<?= $_SERVER['HTTPS'] ? 'https://' : 'http://' ?><?= $_SERVER['HTTP_HOST']?>/" type="text" class="form-control">
+                <input name="url" value="<?= isset($_SERVER['HTTPS']) ? 'https://' : 'http://' ?><?= $_SERVER['HTTP_HOST']?>/" type="text" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Keywords*</label>
-                <input name="keywords" type="text" class="form-control">
+                <input name="keywords" type="text" class="form-control" required>
                 <div class="form-text">Separate with ","</div>
             </div>
             <div class="mb-3">
                 <label class="form-label">Description*</label>
-                <input name="description" type="text" class="form-control">
+                <input name="description" type="text" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Slogan*</label>
-                <input name="slogan" type="text" class="form-control">
+                <input name="slogan" type="text" class="form-control" required>
             </div>
 
             <button name="submit" type="submit" class="btn btn-primary">Submit</button>

@@ -1,3 +1,4 @@
+<?php if($meta):?> 
 <div class="container d-flex justify-content-center">
 <?php if($meta['maxPage'] > 1 && $meta['page'] <= $meta['maxPage']):?>
     <nav aria-label="...">
@@ -35,3 +36,5 @@
     </nav>
 <?php endif;?>
 </div>
+<?php endif;?>
+

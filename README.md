@@ -69,9 +69,9 @@ $ sudo chown www-data:www-data /var/www/html -R
 $ sudo nano /etc/apache2/sites-available/000-default.conf
 change -> DocumentRoot from "/var/www/html" to " /var/www/html/public"
 Add: 
-<Directory /var/www/html/public>
-  AllowOverride All
-</Directory>
+-- <Directory /var/www/html/public>
+--        AllowOverride All
+--</Directory>
 sudo a2enmod rewrite
 $ sudo systemctl reload apache2
 ```
