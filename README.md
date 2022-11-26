@@ -65,7 +65,15 @@ $ cd /var/www/html
 $ sudo rm index.php
 $ sudo git clone https://github.com/HATBE/Blog.git .
 $ sudo chmod 755 /var/www/html -R
-$ sudo chown www-data:www-data /var/www/html
+$ sudo chown www-data:www-data /var/www/html -R
+$ sudo nano /etc/apache2/sites-available/000-default.conf
+change -> DocumentRoot from "/var/www/html" to " /var/www/html/public"
+Add: 
+-- <Directory /var/www/html/public>
+--        AllowOverride All
+--</Directory>
+sudo a2enmod rewrite
+$ sudo systemctl reload apache2
 ```
 
 Now, you can navigate to https://<ip/host> in your browser.
