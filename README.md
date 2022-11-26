@@ -23,24 +23,25 @@ As the Database server, a MariaDB is used.
 
 ``` bash
 $ sudo apt install mariadb-server
-$ mysql_secure_instalation
-Change the root password? [Y/n] n
-Remove anonymous users? [Y/n] y
-Disallow root login remotely? [Y/n] y
-Remove test database and access to it? [Y/n] y
-Reload privilege tables now? [Y/n] y
+$ sudo mariadb-secure-installation
+Enter current password for root (enter for none): ENTER
+Switch to unix_socket authentication [Y/n]: N
+Change the root password? [Y/n] N
+Remove anonymous users? [Y/n] Y
+Disallow root login remotely? [Y/n] Y
+Remove test database and access to it? [Y/n] Y
+Reload privilege tables now? [Y/n] Y
 ```  
 
 PHP Installation.
 
 ``` bash
-$ sudo apt install php libapache2-mod-php php-gmp php-curl php-gd php-mysql php-mbstring php-initl php-bcmath php-imagick php-xml php-zip
+$ sudo apt install php libapache2-mod-php php-gmp php-curl php-gd php-mysql php-mbstring php-bcmath php-imagick php-xml php-zip
 ```
 
 Now we can prepare the System.
 
 ``` bash
-$ sudo chown www-data:www-data /var/www/html
 $ sudo systemctl reload apache2
 ```
 
@@ -61,7 +62,8 @@ EXIT;
 
 ``` bash
 $ cd /var/www/html
-$ git clone https://github.com/HATBE/Blog.git .
+$ sudo rm index.php
+$ sudo git clone https://github.com/HATBE/Blog.git .
 $ sudo chmod 755 /var/www/html -R
 $ sudo chown www-data:www-data /var/www/html
 ```
