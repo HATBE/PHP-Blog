@@ -62,7 +62,7 @@ EXIT;
 
 ``` bash
 $ cd /var/www/html
-$ sudo rm index.php
+$ sudo rm index.html
 $ sudo git clone https://github.com/HATBE/Blog.git .
 $ sudo chmod 755 /var/www/html -R
 $ sudo chown www-data:www-data /var/www/html -R
