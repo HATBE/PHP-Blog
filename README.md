@@ -3,6 +3,7 @@
 - Markdown Support
 - User Management
 - Installer
+
 # Installation
 
 Base OS: Ubuntu-server 20.04
@@ -83,3 +84,40 @@ Follow the instructions of the installer.
 Standard credentials:
 Username: admin
 Password: 1234
+
+---
+
+Youtube Video: https://www.youtube.com/watch?v=I52OLwLcpXc
+
+---
+Installer 
+
+![](.img/0.png)
+
+Index Page 
+
+![](.img/1.png)
+
+Login Page
+
+![](.img/2.png)
+
+Indexpage as loggedin User
+
+![](.img/3.png)
+
+Post (with Markdown)
+
+![](.img/4.png)
+
+Edit Post (with Markdown)
+
+![](.img/5.png)
+
+User Management
+
+![](.img/6.png)
+
+Search bar
+
+![](.img/7.png)
