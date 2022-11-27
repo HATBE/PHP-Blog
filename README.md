@@ -37,7 +37,7 @@ Reload privilege tables now? [Y/n] Y
 PHP Installation.
 
 ``` bash
-$ sudo apt install php libapache2-mod-php php-gmp php-curl php-gd php-mysql php-mbstring php-bcmath php-imagick php-xml php-zip
+$ sudo apt install php libapache2-mod-php php-mysql
 ```
 
 Now we can prepare the System.
