@@ -1,8 +1,87 @@
-# Feautures
+ ## Key Features
 
-- Markdown Support
-- User Management
-- Installer
+- **CRUD Functionality**: Ability to Create, Read, Update, and Delete posts.
+- **Markdown Support**: Enhanced content formatting with Markdown.
+- **User Management**: Comprehensive user management system.
+- **Installation Process**: Simplified installer for easy setup.
+- **Authentication System**: Secure login and registration features.
+
+## Application Architecture
+
+This blog application is built using the LAMP stack, combining Linux, Apache, MySQL, and PHP. The application is developed in PHP, utilizing a MySQL database for data storage. Uniquely, it is constructed entirely from scratch, without relying on any frameworks. For styling, the Bootstrap CSS Framework is used. To parse Markdown, i used the library "Parsedown".
+
+The complete source code is accessible on GitHub, encouraging review and collaborative enhancements. Additionally, an in-depth tutorial is available on YouTube.
+
+## Detailed Features
+
+### Index Page
+
+- **Post Display**: All posts are displayed on the index page, with pagination for easy navigation.
+- **Interaction Options**: Users can read more about a post, and if logged in, edit or delete it.
+
+If not logged in:
+
+![](./.img/1.png)
+
+If logged in:
+
+![](./.img/3.png)
+
+### Search Functionality
+
+- **Robust Search**: A search bar in the header allows users to search by author, title, or full text of blog posts.
+- **Filtered Results**: Displays filtered content similar to the index page based on search criteria.
+
+![](./.img/7.png)
+
+### Login
+
+- **User Authentication**: Users with an account can log in using their username and password.
+
+![](./.img/2.png)
+
+### View Post
+
+- **Content Rendering**: On the single post page, users see the rendered Markdown blog post, along with details like author, posting date, and title.
+- **Post Management**: Logged-in users have the option to delete or edit the post.
+
+![](./.img/4.png)
+
+### Create Post
+
+- **Post Creation**: Logged-in users can create new posts, choosing a suitable title and crafting content in plain text or Markdown.
+
+### Edit Post
+
+- **Content Editing**: Logged-in users can edit any post, working directly with the raw Markdown code.
+
+![](./.img/5.png)
+
+### User Management
+
+- **Administration Tools**: Provides an interface for managing users, including editing or deleting users (except for themselves), and registering new users.
+
+![](./.img/6.png)
+
+### Create User
+
+- **User Registration**: Logged-in users can add new users through a simplified form, mirroring the login interface for consistency.
+
+### Installation Guide
+
+1. Install a LAMP Server.
+2. Create a MySQL Database.
+3. Clone the GitHub repository.
+4. Set up a virtual host.
+5. Access the URL for configuration.
+
+![](./.img/8.png)
+
+---
+
+For further insights and a deeper understanding of this web application, please refer to the detailed YouTube video tutorial, explore the live demo, or examine the source code on GitHub.
+
+Youtube Video: https://www.youtube.com/watch?v=I52OLwLcpXc
 
 # Installation
 
@@ -86,38 +165,3 @@ Username: admin
 Password: 1234
 
 ---
-
-Youtube Video: https://www.youtube.com/watch?v=I52OLwLcpXc
-
----
-Installer 
-
-![](.img/0.png)
-
-Index Page 
-
-![](.img/1.png)
-
-Login Page
-
-![](.img/2.png)
-
-Indexpage as loggedin User
-
-![](.img/3.png)
-
-Post (with Markdown)
-
-![](.img/4.png)
-
-Edit Post (with Markdown)
-
-![](.img/5.png)
-
-User Management
-
-![](.img/6.png)
-
-Search bar
-
-![](.img/7.png)
